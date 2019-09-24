@@ -11,7 +11,7 @@ const options = {
   host: 'emq.yfmen.com',
   key: KEY,
   cert: CERT,
-  rejectUnauthorized: true,
+  rejectUnauthorized: false,
   // The CA list will be used to determine if server is authorized
   ca: TRUSTED_CA_LIST,
   protocol: 'mqtts'
