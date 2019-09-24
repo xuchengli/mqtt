@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-mqtt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuchengli/mqtt.git"
+  },
+  "author": "Li Xu Cheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuchengli/mqtt/issues"
+  },
+  "homepage": "https://github.com/xuchengli/mqtt#readme",
+  "dependencies": {
+    "mqtt": "^3.0.0"
+  }
+}
