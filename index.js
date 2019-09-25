@@ -13,8 +13,8 @@ protobuf.load("accessrecord.proto", function(err, root) {
   const AccessRecordMessage = root.lookupType("accessrecord.AccessRecord");
 
   const payload = {
-    id: 1,
-    sn: 2,
+    id: 10010,
+    sn: 20020,
     time: 20190925,
     deviceId: 4,
     opened: true,
@@ -23,6 +23,9 @@ protobuf.load("accessrecord.proto", function(err, root) {
 
   const errMsg = AccessRecordMessage.verify(payload);
   if (errMsg) throw Error(errMsg);
+
+  const message = AccessRecordMessage.create(payload);
+  const buffer = AccessRecordMessage.encode(message).finish();
 
   const options = {
     port: 8883,
@@ -37,13 +40,20 @@ protobuf.load("accessrecord.proto", function(err, root) {
   const client = mqtt.connect(options);
 
   client.subscribe('/d/r');
+  client.publish('/d/r', buffer);
   client.on('message', function (topic, message) {
     // message is Buffer
-    console.log(message.toString());
+    const decodedMsg = AccessRecordMessage.decode(message);
+    const jsonMsg = JSON.parse(JSON.stringify(decodedMsg));
+
+    console.log('_/_/_/_/_/_/_/_/ 消息体 _/_/_/_/_/_/_/_/');
+    console.log(jsonMsg);
+    console.log('_/_/_/_/_/_/_/_/ 消息体 _/_/_/_/_/_/_/_/');
+
     client.end();
   });
 
   client.on('connect', function () {
-    console.log('Connected');
+    console.log('连接成功>>>>');
   });
 });
