@@ -19,6 +19,6 @@
   "homepage": "https://github.com/xuchengli/mqtt#readme",
   "dependencies": {
     "mqtt": "^3.0.0",
-    "protobufjs": "^6.8.8"
+    "protobufjs": "^6.11.3"
   }
 }
